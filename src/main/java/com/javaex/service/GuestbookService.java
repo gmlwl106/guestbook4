@@ -21,13 +21,13 @@ public class GuestbookService {
 	public int guestInsert(GuestbookVo gbVo) {
 		return gbDao.guestInsert(gbVo);
 	}
-	
+	/*
 	public GuestbookVo getGuest(int no) {
 		return gbDao.getGuest(no);
 	}
-
-	public int guestDelete(int no, String pw) {
-		return gbDao.guestDelete(no, pw);
+	*/
+	public int guestDelete(GuestbookVo gbVo) {
+		return gbDao.guestDelete(gbVo);
 	}
 
 	

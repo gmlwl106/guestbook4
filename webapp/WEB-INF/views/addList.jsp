@@ -44,7 +44,7 @@
 			<tr>
 				<td width="50px">${gbVo.no }</td>
 				<td width="150px">${gbVo.name }</td>
-				<td width="300px">${gbVo.date }</td>
+				<td width="300px">${gbVo.regDate }</td>
 				<td>
 					<a href="deleteForm/${gbVo.no }">삭제</a>
 				</td>

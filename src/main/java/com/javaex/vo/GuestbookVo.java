@@ -7,7 +7,7 @@ public class GuestbookVo {
 	private String name;
 	private String password;
 	private String content;
-	private String date;
+	private String regDate;
 	
 	
 	
@@ -19,12 +19,12 @@ public class GuestbookVo {
 		this.password = password;
 		this.content = content;
 	}
-	public GuestbookVo(int no, String name, String password, String content, String date) {
+	public GuestbookVo(int no, String name, String password, String content, String regDate) {
 		this.no = no;
 		this.name = name;
 		this.password = password;
 		this.content = content;
-		this.date = date;
+		this.regDate = regDate;
 	}
 	
 	
@@ -53,19 +53,20 @@ public class GuestbookVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getDate() {
-		return date;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
+
 	
 	
 	//메소드 일반
 	@Override
 	public String toString() {
-		return "guestVo [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content + ", date="
-				+ date + "]";
+		return "GuestbookVo [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content
+				+ ", regDate=" + regDate + "]";
 	}
 	
 	

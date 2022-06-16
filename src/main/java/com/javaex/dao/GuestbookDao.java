@@ -1,7 +1,6 @@
 package com.javaex.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,31 +19,48 @@ public class GuestbookDao {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	private Connection conn = sqlSession.getConnection();
 
+	
+	//방명록 출력
+	public List<GuestbookVo> getGuestList() {
+		List<GuestbookVo> gbList = sqlSession.selectList("guestbook.getGuestList");
+		return gbList;
+	}
+	
+	//방명록 추가
+	public int guestInsert(GuestbookVo gbVo) {
+		int count = sqlSession.insert("guestbook.guestInsert", gbVo);
+		return count;
+	}
+	
+	//방명록 삭제
+	public int guestDelete(GuestbookVo gbVo) {
+		int count = sqlSession.delete("guestbook.guestDelete", gbVo);
+		return count;
+	}
+	
+	
+	
+//이전 방식////////////////////////////////////////////////////////////////////////////////////////	
+	/*
 	// 0. import java.sql.*;
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
+	
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private String id = "webdb";
 	private String pw = "webdb";
 	
+	
 	private void getConnection() {
-		try {
-			// 1. JDBC 드라이버 (Oracle) 로딩
-			Class.forName(driver);
-
-			// 2. Connection 얻어오기
-			conn = DriverManager.getConnection(url, id, pw);
-			// System.out.println("접속성공");
-
-		} catch (ClassNotFoundException e) {
-			System.out.println("error: 드라이버 로딩 실패 - " + e);
-		} catch (SQLException e) {
-			System.out.println("error:" + e);
-		}
+		 2. Connection 얻어오기
+		conn = DriverManager.getConnection(url, id, pw);
+		System.out.println("접속성공");
 	}
 	
 	private void close() {
@@ -63,10 +79,10 @@ public class GuestbookDao {
 			System.out.println("error:" + e);
 		}
 	}
-	
-	
+	*/
+	/*
 	//Guestbook 출력
-	public List<GuestbookVo> getGuestList() {
+	public List<GuestbookVo> getGuestList2() {
 		
 		List<GuestbookVo> guestList = new ArrayList<GuestbookVo>();
 		
@@ -108,9 +124,8 @@ public class GuestbookDao {
 		return guestList;
 	}
 	
-	
 	//Guestbook 추가
-	public int guestInsert(GuestbookVo guestVo) {
+	public int guestInsert2(GuestbookVo guestVo) {
 		int count = -1;
 		getConnection();
 
@@ -141,8 +156,6 @@ public class GuestbookDao {
 		close();
 		return count;
 	}
-	
-	
 	
 	//Guestbook 찾기
 	public GuestbookVo getGuest(int delNo) {
@@ -185,10 +198,8 @@ public class GuestbookDao {
 		return guest;
 	}
 	
-	
-	
 	//Guestbook 삭제
-	public int guestDelete(int delNo, String delPw) {
+	public int guestDelete2(int delNo, String delPw) {
 		int count = -1;
 		
 		getConnection();
@@ -217,4 +228,5 @@ public class GuestbookDao {
 		close();
 		return count;
 	}
+	*/
 }

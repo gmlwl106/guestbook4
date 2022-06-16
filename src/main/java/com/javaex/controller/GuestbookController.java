@@ -39,6 +39,8 @@ public class GuestbookController {
 	public String write(@ModelAttribute GuestbookVo gbVo) {
 		System.out.println("GuestbookController->write()");
 		
+		gbVo.setContent(gbVo.getContent().replace("\r\n","<br>"));
+		
 		gbService.guestInsert(gbVo);
 		
 		return "redirect:/list";
@@ -59,9 +61,7 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo gbVo) {
 		System.out.println("GuestbookController->delete()");
 		
-		int no = gbVo.getNo();
-		String pw = gbVo.getPassword();
-		gbService.guestDelete(no, pw);
+		gbService.guestDelete(gbVo);
 		
 		return "redirect:/list";
 	}
