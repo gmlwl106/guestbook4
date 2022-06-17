@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class GuestbookDao {
 	}
 	
 	//방명록 삭제
-	public int guestDelete(GuestbookVo gbVo) {
-		int count = sqlSession.delete("guestbook.guestDelete", gbVo);
+	public int guestDelete(Map<String, Object> gbMap) {
+		int count = sqlSession.delete("guestbook.guestDelete", gbMap);
 		return count;
 	}
 	

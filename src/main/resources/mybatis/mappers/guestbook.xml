@@ -22,7 +22,7 @@
 		]]>
 	</insert>
 	
-	<delete id="guestDelete" parameterType="com.javaex.vo.GuestbookVo">
+	<delete id="guestDelete" parameterType="map">
 		<![CDATA[
 			delete guestbook
 			where no = #{no}

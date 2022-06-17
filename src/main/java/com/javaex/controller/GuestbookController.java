@@ -61,7 +61,10 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo gbVo) {
 		System.out.println("GuestbookController->delete()");
 		
-		gbService.guestDelete(gbVo);
+		int no = gbVo.getNo();
+		String password = gbVo.getPassword();
+		
+		int count = gbService.guestDelete(no, password);
 		
 		return "redirect:/list";
 	}
